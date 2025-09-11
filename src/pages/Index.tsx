@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@/hooks/useTheme";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -11,21 +10,19 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 const Index = () => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
-      <div className="min-h-screen bg-background text-foreground">
-        <Navigation />
-        <ScrollProgress />
-        <main className="relative">
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Blog />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <div className="min-h-screen bg-background text-foreground">
+      <Navigation />
+      <ScrollProgress />
+      <main className="relative">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Blog />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
