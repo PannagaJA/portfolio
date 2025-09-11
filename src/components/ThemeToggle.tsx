@@ -1,10 +1,10 @@
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/hooks/useTheme";
+import { useSimpleTheme } from "@/hooks/useSimpleTheme";
 import { motion } from "framer-motion";
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useSimpleTheme();
 
   return (
     <Button
