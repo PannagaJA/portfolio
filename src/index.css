@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Portfolio Design System - Dark Theme with Elegant Styling */
+/* Modern Portfolio Design System - Enhanced with Theme Toggle & Glassmorphism */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
@@ -38,6 +38,11 @@
 
     --radius: 0.75rem;
 
+    /* Glassmorphism Variables - Dark Theme */
+    --glass-bg: 222 20% 8% / 0.4;
+    --glass-border: 217 91% 60% / 0.2;
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
     /* Custom Design Tokens */
     --hero-gradient: linear-gradient(135deg, hsl(222 23% 6%) 0%, hsl(222 20% 10%) 100%);
     --accent-gradient: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(224 76% 48%) 100%);
@@ -47,30 +52,54 @@
     --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  /* Light theme variants (for potential future use) */
-  .light {
-    --background: 210 20% 98%;
+  /* Light Theme */
+  [data-theme="light"] {
+    --background: 0 0% 100%;
     --foreground: 222 23% 6%;
-    --card: 210 20% 100%;
+
+    --card: 0 0% 100%;
     --card-foreground: 222 23% 6%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 20% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 23% 6%;
+
+    --primary: 346 77% 50%;
+    --primary-foreground: 355 100% 97%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 346 77% 50%;
+
+    /* Light Theme Glassmorphism */
+    --glass-bg: 0 0% 100% / 0.25;
+    --glass-border: 346 77% 50% / 0.15;
+    --glass-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.2);
+
+    /* Light Theme Gradients */
+    --hero-gradient: linear-gradient(135deg, #ffffff 0%, #ffeef7 50%, #ffe4f0 100%);
+    --accent-gradient: linear-gradient(135deg, hsl(346 77% 50%) 0%, hsl(340 82% 52%) 100%);
+    --glow-shadow: 0 0 40px hsl(346 77% 50% / 0.15);
   }
 }
 
@@ -80,8 +109,13 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground font-inter antialiased transition-colors duration-500;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Light theme gradient background */
+  [data-theme="light"] body {
+    background: var(--hero-gradient);
   }
 
   html {
@@ -90,6 +124,27 @@
 }
 
 @layer components {
+  /* Glassmorphism Effects */  
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius);
+  }
+  
+  .glass-hover {
+    @apply transition-all duration-300 cursor-pointer;
+  }
+  
+  .glass-hover:hover {
+    background: hsl(var(--glass-bg) / 0.8);
+    border-color: hsl(var(--primary) / 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px 0 hsl(var(--primary) / 0.1);
+  }
+
   /* Hero Section Styles */
   .hero-title {
     @apply text-4xl md:text-6xl font-bold tracking-tight;

@@ -1,5 +1,6 @@
 import { Code, Lightbulb, Rocket, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 const About = () => {
   const highlights = [
@@ -30,15 +31,27 @@ const About = () => {
       <div className="container-responsive">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-          </div>
+          </motion.div>
 
           {/* Main Content */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Story */}
-            <div className="space-y-6 animate-slide-in">
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
               <p className="text-lg text-muted-foreground leading-relaxed">
                 With over 6 years of experience in software development, I've had the privilege of working 
                 on diverse projects ranging from early-stage startups to enterprise-level applications.
@@ -53,26 +66,34 @@ const About = () => {
                 developers, or working on my next startup idea. I believe in continuous learning and 
                 staying at the forefront of technological innovation.
               </p>
-            </div>
+            </motion.div>
 
             {/* Highlights Grid */}
             <div className="grid sm:grid-cols-2 gap-4">
               {highlights.map((item, index) => (
-                <Card 
-                  key={item.title} 
-                  className="hover-lift transition-spring border-border/40 bg-card/60 backdrop-blur-sm"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
                 >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <item.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="font-semibold mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                  <Card className="glass-card glass-hover h-full">
+                    <CardContent className="p-6 text-center">
+                      <motion.div 
+                        className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4"
+                        whileHover={{ scale: 1.1, backgroundColor: "hsl(var(--primary) / 0.2)" }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <item.icon className="h-6 w-6 text-primary" />
+                      </motion.div>
+                      <h3 className="font-semibold mb-2">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>

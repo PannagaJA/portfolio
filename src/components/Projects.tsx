@@ -2,6 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = [
@@ -68,100 +69,148 @@ const Projects = () => {
     <section id="projects" className="section-padding bg-card/30">
       <div className="container-responsive">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Projects</h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Here are some of the projects I've worked on that showcase my skills and passion for innovation
           </p>
-        </div>
+        </motion.div>
 
         {/* Featured Projects */}
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
           {featuredProjects.map((project, index) => (
-            <Card 
+            <motion.div
               key={project.title}
-              className="group hover-lift transition-spring border-border/40 bg-card/60 backdrop-blur-sm overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-smooth"></div>
-              </div>
-              <CardHeader>
-                <h3 className="text-xl font-semibold group-hover:text-primary transition-smooth">
-                  {project.title}
-                </h3>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button size="sm" className="flex-1">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    <Github className="h-4 w-4" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              <Card className="group glass-card glass-hover overflow-hidden h-full">
+                <motion.div 
+                  className="relative overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-smooth"></div>
+                </motion.div>
+                <CardHeader>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-smooth">
+                    {project.title}
+                  </h3>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech, techIndex) => (
+                      <motion.div
+                        key={tech}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ 
+                          duration: 0.3, 
+                          delay: index * 0.1 + techIndex * 0.05 
+                        }}
+                        viewport={{ once: true }}
+                      >
+                        <Badge variant="secondary" className="text-xs glass-card">
+                          {tech}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    <motion.div 
+                      className="flex-1"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button size="sm" className="w-full accent-gradient">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Live Demo
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Button variant="outline" size="sm" className="glass-card">
+                        <Github className="h-4 w-4" />
+                      </Button>
+                    </motion.div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
         {/* Other Projects */}
         <div>
-          <h3 className="text-2xl font-bold text-center mb-8">Other Notable Projects</h3>
+          <motion.h3 
+            className="text-2xl font-bold text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Other Notable Projects
+          </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherProjects.map((project, index) => (
-              <Card 
+              <motion.div
                 key={project.title}
-                className="hover-lift transition-spring border-border/40 bg-card/40 backdrop-blur-sm animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <CardHeader className="pb-3">
-                  <h4 className="font-semibold text-lg">{project.title}</h4>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="flex-1 text-xs">
-                      <ExternalLink className="mr-1 h-3 w-3" />
-                      Demo
-                    </Button>
-                    <Button size="sm" variant="outline">
-                      <Github className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                <Card className="glass-card glass-hover h-full">
+                  <CardHeader className="pb-3">
+                    <h4 className="font-semibold text-lg">{project.title}</h4>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-xs glass-card">
+                          {tech}
+                        </Badge>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <Badge variant="secondary" className="text-xs glass-card">
+                          +{project.technologies.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="outline" className="flex-1 text-xs glass-card">
+                        <ExternalLink className="mr-1 h-3 w-3" />
+                        Demo
+                      </Button>
+                      <Button size="sm" variant="outline" className="glass-card">
+                        <Github className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
