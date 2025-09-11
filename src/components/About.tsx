@@ -131,24 +131,26 @@ const About = () => {
         {/* --- Tabs Section --- */}
         <div>
           {/* Tabs */}
-          <div className="flex justify-center mb-10 space-x-4">
-            {["experience", "education"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab as any)}
-                className={`
-                  px-4 py-2 rounded-full text-sm font-medium transition
-                  ${
-                    activeTab === tab
-                      ? "bg-primary text-white shadow-md"
-                      : "bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20"
-                  }
-                `}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div className="flex justify-center mb-10 space-x-4 ">
+              {["experience", "education"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab as any)}
+                  className={`
+                    px-4 py-2 rounded-full text-sm font-medium transition
+                    ${
+                      activeTab === tab
+                        ? "accent-gradient hover-glow transition-spring group"
+                        : "bg-gray-800 text-gray-200 dark:bg-gray-800 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20"
+                    }
+                  `}
+                >
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+          </motion.div>
 
           {/* Timeline */}
           <div className="relative flex" ref={ref}>
