@@ -35,7 +35,7 @@ const Navigation = () => {
     <>
       {/* Navbar */}
       <motion.nav
-        className="fixed top-1 left-0 right-0 z-50 flex justify-center"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20, mass: 0.6, velocity: 2 }}
