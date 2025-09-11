@@ -7,57 +7,39 @@ import { motion } from "framer-motion";
 const Projects = () => {
   const projects = [
     {
-      title: "AI-Powered Analytics Dashboard",
-      description: "A comprehensive analytics platform that uses machine learning to provide predictive insights for e-commerce businesses. Built with React, Python, and TensorFlow.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      technologies: ["React", "Python", "TensorFlow", "PostgreSQL", "AWS"],
+      title: "NeuroCampus - Academic Management System",
+      description: "AI-powered academic management platform with role-based dashboards for Admin, HOD, Faculty, and Students. Features face recognition attendance, JWT/OTP auth, AI-assisted Q&A, and PDF/CSV exports.",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      technologies: ["Django", "React", "PostgreSQL", "AWS", "AI/ML"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true
     },
     {
-      title: "Smart Contract Trading Bot",
-      description: "Automated trading bot for DeFi protocols with smart contract integration. Includes risk management algorithms and real-time market analysis.",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
-      technologies: ["Node.js", "Web3.js", "Solidity", "React", "MongoDB"],
+      title: "AI-Powered Case Study Chatbot",
+      description: "Built a chatbot to answer case study questions using OpenAI API. Designed a React + Vite frontend for real-time user interaction with document pipeline for context-aware responses.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+      technologies: ["Python", "Flask", "React", "TypeScript", "OpenAI API"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/pannaga-ja",
       featured: true
     },
     {
-      title: "Team Collaboration Platform",
-      description: "Real-time collaboration tool for remote teams with video calls, document sharing, and project management features. Used by 10,000+ users.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      technologies: ["Next.js", "Socket.io", "Redis", "PostgreSQL", "Docker"],
+      title: "Attendance System using Face Recognition",
+      description: "Real-time attendance system with webcam-based detection. Integrated with Google Sheets for automated record management. Achieved 86.73% accuracy, reducing manual work.",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop",
+      technologies: ["Python", "OpenCV", "MTCNN", "Google Sheets API"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/pannaga-ja",
       featured: true
     },
     {
-      title: "Mobile Learning App",
-      description: "Educational mobile app with personalized learning paths and AI-driven content recommendations. Available on iOS and Android.",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
-      technologies: ["React Native", "Firebase", "Python", "ML Algorithms"],
+      title: "Mental Health Assistance System",
+      description: "AI-based mental wellness platform with chatbot, stress-relief music, and interactive games. Contributed as Frontend Developer & UI/UX Designer. Secured 2nd place at TJ Hacks Hackathon.",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
+      technologies: ["React.js", "Tailwind CSS", "AI", "UI/UX"],
       liveUrl: "#",
-      githubUrl: "#",
-      featured: false
-    },
-    {
-      title: "E-commerce Optimization Tool",
-      description: "SaaS platform that helps online stores optimize their conversion rates using A/B testing and user behavior analysis.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      technologies: ["Vue.js", "Node.js", "MySQL", "AWS", "Stripe API"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false
-    },
-    {
-      title: "IoT Environmental Monitor",
-      description: "IoT system for monitoring environmental conditions in smart buildings with real-time alerts and data visualization.",
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop",
-      technologies: ["Arduino", "React", "InfluxDB", "Node.js", "MQTT"],
-      liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/pannaga-ja",
       featured: false
     }
   ];

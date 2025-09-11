@@ -10,27 +10,26 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "alex@example.com",
-      href: "mailto:alex@example.com"
+      value: "pannaga.baradwaj@gmail.com",
+      href: "mailto:pannaga.baradwaj@gmail.com"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      value: "+91 9741405534",
+      href: "tel:+919741405534"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
+      value: "Bengaluru, India",
       href: "#"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Github, href: "https://github.com/pannaga-ja", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/in/pannaga-ja", label: "LinkedIn" },
   ];
 
   return (
@@ -111,8 +110,8 @@ const Contact = () => {
             <div className="space-y-6">
               <h3 className="text-2xl font-bold">Let's Connect</h3>
               <p className="text-muted-foreground leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or just having a conversation about technology and innovation.
+                I'm always open to discussing new opportunities, internships, full-time roles, 
+                or collaborating on exciting projects in AI/ML and full-stack development.
               </p>
               
               <div className="space-y-4">
@@ -177,7 +176,7 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <h4 className="font-semibold mb-2">Ready to start a project?</h4>
                   <p className="text-muted-foreground mb-4 text-sm">
-                    I'm currently available for freelance projects and full-time opportunities.
+                    I'm currently seeking internships and full-time opportunities in software development.
                   </p>
                   <motion.div
                     whileHover={{ scale: 1.05 }}

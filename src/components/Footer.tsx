@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Left side - Copyright */}
           <div className="text-center md:text-left">
             <p className="text-muted-foreground">
-              © 2024 Alex Johnson. Built with{" "}
+              © 2024 Pannaga J A. Built with{" "}
               <Heart className="inline h-4 w-4 text-red-500 mx-1" />{" "}
               using React & Tailwind CSS
             </p>

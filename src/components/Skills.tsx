@@ -7,36 +7,36 @@ const Skills = () => {
     {
       category: "Frontend Development",
       skills: [
-        "React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", 
-        "React Native", "Redux", "Framer Motion", "Three.js"
+        "React.js", "Vite", "TypeScript", "JavaScript", "Tailwind CSS", 
+        "HTML", "CSS", "UI/UX Design"
       ]
     },
     {
       category: "Backend Development", 
       skills: [
-        "Node.js", "Python", "Express.js", "FastAPI", "Django", 
-        "GraphQL", "REST APIs", "WebSockets", "Microservices"
+        "Python", "Django", "Flask", "Node.js", "Express.js", 
+        "REST APIs", "JWT Authentication", "Java", "C"
       ]
     },
     {
       category: "Database & Cloud",
       skills: [
-        "PostgreSQL", "MongoDB", "Redis", "AWS", "Docker", 
-        "Kubernetes", "Vercel", "Supabase", "Firebase"
+        "PostgreSQL", "MySQL", "Firebase", "AWS", "Git", 
+        "GitHub", "Deployment"
       ]
     },
     {
       category: "AI & Machine Learning",
       skills: [
-        "TensorFlow", "PyTorch", "OpenAI API", "LangChain", "Hugging Face",
-        "Computer Vision", "NLP", "MLOps", "Prompt Engineering"
+        "OpenCV", "TensorFlow", "OpenAI API", "Computer Vision", "MTCNN",
+        "dlib", "Face Recognition", "AI/ML"
       ]
     },
     {
-      category: "Tools & Workflow",
+      category: "Tools & Others",
       skills: [
-        "Git", "GitHub Actions", "Figma", "VS Code", "Linear",
-        "Notion", "Slack", "Postman", "Jest"
+        "Git", "GitHub", "VS Code", "Agile Development", 
+        "Hackathons", "Research", "Problem Solving"
       ]
     }
   ];
@@ -114,9 +114,9 @@ const Skills = () => {
         >
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
             I'm always learning and adapting to new technologies. Currently exploring 
-            <span className="text-primary font-semibold"> Web3</span>, 
-            <span className="text-primary font-semibold"> Edge Computing</span>, and 
-            <span className="text-primary font-semibold"> Advanced AI Models</span>.
+            <span className="text-primary font-semibold"> Advanced AI Models</span>, 
+            <span className="text-primary font-semibold"> Cloud Computing</span>, and 
+            <span className="text-primary font-semibold"> Full-Stack Architectures</span>.
           </p>
         </motion.div>
       </div>

@@ -30,7 +30,7 @@ const Hero = () => {
             <div className="w-full h-full rounded-full overflow-hidden border-4 border-primary/20 hover-lift animate-float glass-card">
               <img
                 src={profileImage}
-                alt="Alex Johnson - Full-Stack Developer"
+                alt="Pannaga J A - Full-Stack Developer"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -48,10 +48,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <h1 className="hero-title">
-              Hi, I'm <span className="text-primary">Alex Johnson</span>
+              Hi, I'm <span className="text-primary">Pannaga J A</span>
             </h1>
             <p className="hero-subtitle max-w-2xl mx-auto">
-              Full-Stack Developer | AI Innovator | Startup Founder
+              Full-Stack Developer | AI/ML Enthusiast | Software Engineer
             </p>
           </motion.div>
 
@@ -62,8 +62,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Passionate full-stack developer with expertise in modern web technologies and artificial intelligence. 
-            I create innovative solutions that bridge the gap between cutting-edge technology and real-world business needs.
+            Computer Science Engineering student passionate about building scalable applications, intelligent platforms, and computer vision solutions. 
+            I create innovative solutions that bridge cutting-edge technology with real-world business needs using React, Django, AWS, and AI/ML.
           </motion.p>
 
           {/* Call to Action Buttons */}
@@ -103,9 +103,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.0 }}
           >
             {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
-              { icon: Mail, href: "#", label: "Email" },
+              { icon: Github, href: "https://github.com/pannaga-ja", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/in/pannaga-ja", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:pannaga.baradwaj@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }, index) => (
               <motion.a
                 key={label}

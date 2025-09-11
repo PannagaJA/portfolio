@@ -6,23 +6,23 @@ const About = () => {
   const highlights = [
     {
       icon: Code,
-      title: "Full-Stack Expertise",
-      description: "Proficient in modern web technologies, from React and Node.js to cloud infrastructure and databases."
+      title: "Full-Stack Development",
+      description: "Proficient in React, Django, Node.js, PostgreSQL, and AWS. Built scalable web applications and APIs."
     },
     {
       icon: Lightbulb,
-      title: "AI Innovation",
-      description: "Specialized in machine learning, natural language processing, and building AI-powered applications."
+      title: "AI/ML Innovation",
+      description: "Specialized in computer vision, OpenAI API integration, face recognition systems, and AI-powered chatbots."
     },
     {
       icon: Rocket,
-      title: "Startup Experience",
-      description: "Co-founded multiple tech startups, bringing products from concept to market successfully."
+      title: "Project Leadership",
+      description: "Led development of NeuroCampus platform and multiple AI-powered solutions from concept to deployment."
     },
     {
       icon: Users,
-      title: "Team Leadership",
-      description: "Led cross-functional teams of developers, designers, and product managers in fast-paced environments."
+      title: "Team Collaboration",
+      description: "Coordinator at AMC E-CELL, hackathon winner, and active contributor to the tech community."
     }
   ];
 
@@ -53,18 +53,18 @@ const About = () => {
               viewport={{ once: true }}
             >
               <p className="text-lg text-muted-foreground leading-relaxed">
-                With over 6 years of experience in software development, I've had the privilege of working 
-                on diverse projects ranging from early-stage startups to enterprise-level applications.
+                Currently pursuing B.E. in Computer Science & Engineering (AIML) at AMC Engineering College, Bengaluru. 
+                I'm passionate about building scalable applications and intelligent platforms that solve real-world problems.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                My journey began with a computer science degree, but my real education came from building 
-                real products that solve real problems. I'm passionate about creating technology that makes 
-                a meaningful impact on people's lives.
+                My journey includes working as a Software Engineer at Stalight Technology, where I developed "NeuroCampus" 
+                - an AI-powered academic management platform using Django, React, PostgreSQL, and AWS with features like 
+                face recognition attendance and AI-assisted Q&A.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring the latest AI research, mentoring aspiring 
-                developers, or working on my next startup idea. I believe in continuous learning and 
-                staying at the forefront of technological innovation.
+                When I'm not coding, I'm participating in hackathons (2nd place at TJ Hacks), contributing to the tech community, 
+                or exploring the latest in AI/ML research. I believe in continuous learning and creating technology that makes 
+                a meaningful impact.
               </p>
             </motion.div>
 
