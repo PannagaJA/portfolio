@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,7 +23,7 @@ const Navigation = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -34,37 +32,52 @@ const Navigation = () => {
   };
 
   return (
-    <motion.nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-card border-b border-border/50" : ""
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="container-responsive">
-        <div className="flex items-center justify-between h-16">
+    <>
+      {/* Navbar */}
+      <motion.nav
+        className="fixed top-1 left-0 right-0 z-50 flex justify-center"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20, mass: 0.6, velocity: 2 }}
+      >
+        <motion.div
+          layout
+          initial={false}
+          animate={{
+            width: scrolled ? "85%" : "auto",
+            borderRadius: "9999px",
+            paddingLeft: scrolled ? "2rem" : "1rem",
+            paddingRight: scrolled ? "2rem" : "1rem",
+            paddingTop: scrolled ? "0.75rem" : "0.5rem",
+            paddingBottom: scrolled ? "0.75rem" : "0.5rem",
+          }}
+          transition={{
+            layout: { type: "spring", stiffness: 120, damping: 18, mass: 0.6, restDelta: 0.001 },
+            default: { duration: 0.5, ease: [0.45, 0, 0.55, 1] },
+          }}
+          className="flex flex-row items-center justify-between shadow-lg backdrop-blur-md border border-border/50 glass-card bg-background/70 overflow-hidden relative z-50"
+        >
           {/* Logo */}
-          <motion.div 
-            className="text-xl font-bold"
+          <motion.div
+            className="text-xl font-bold mr-6 whitespace-nowrap min-w-[130px]"
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: "spring", stiffness: 250, damping: 18 }}
           >
-            <span className="text-foreground">Alex</span>
-            <span className="text-primary">Johnson</span>
+            <span className="text-foreground">Pannaga </span>
+            <span className="text-primary">J A</span>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 className="text-muted-foreground hover:text-foreground transition-smooth relative group"
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
+                transition={{ delay: index * 0.08, type: "spring", stiffness: 180, damping: 20 }}
+                whileHover={{ y: -2, scale: 1.05 }}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -73,46 +86,56 @@ const Navigation = () => {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button + Theme Toggle */}
-          <div className="flex items-center space-x-2 md:hidden">
+          {/* Mobile Hamburger */}
+          <div className="flex flex-row items-center space-x-2 md:hidden ml-auto relative">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-            >
+            <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
           </div>
-        </div>
+        </motion.div>
+      </motion.nav>
 
-        {/* Mobile Navigation */}
+      {/* Mobile Dropdown */}
+      <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            className="md:hidden py-4 border-t border-border/50 glass-card"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+          // Backdrop
+          <motion.div
+            className="fixed inset-0 z-40 bg-black/20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)} // click outside closes
           >
-            <div className="flex flex-col space-y-4">
+            {/* Mobile Dropdown */}
+            <motion.div
+              className="fixed top-[70px] left-1/2 -translate-x-1/2 w-52 bg-background/70 dark:bg-background/50 backdrop-blur-md border border-border/50 shadow-lg flex flex-col items-center space-y-2 p-4 z-50 rounded-xl"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+            >
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-foreground transition-smooth text-left py-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  onClick={() => {
+                    scrollToSection(item.href);
+                    setIsOpen(false);
+                  }}
+                  className="text-muted-foreground hover:text-foreground transition-smooth px-4 py-2 rounded-lg w-full text-center"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
                 >
                   {item.name}
                 </motion.button>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         )}
-      </div>
-    </motion.nav>
+      </AnimatePresence>
+    </>
   );
 };
 

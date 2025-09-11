@@ -56,7 +56,7 @@ const Blog = () => {
   };
 
   return (
-    <section id="blog" className="section-padding">
+    <section id="blog" className=" section-padding">
       <div className="container-responsive">
         {/* Section Header */}
         <motion.div 

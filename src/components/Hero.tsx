@@ -2,6 +2,7 @@ import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile-image.jpg";
 import { motion } from "framer-motion";
+import Resume from "@/assets/resume.pdf";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -84,14 +85,16 @@ const Hero = () => {
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="glass-card glass-hover hover:bg-primary hover:text-primary-foreground border-primary/20"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </Button>
+              <a href={Resume} download>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="glass-card glass-hover hover:bg-primary hover:text-primary-foreground border-primary/20"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -103,7 +106,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.0 }}
           >
             {[
-              { icon: Github, href: "https://github.com/pannaga-ja", label: "GitHub" },
+              { icon: Github, href: "https://github.com/PannagaJA", label: "GitHub" },
               { icon: Linkedin, href: "https://linkedin.com/in/pannaga-ja", label: "LinkedIn" },
               { icon: Mail, href: "mailto:pannaga.baradwaj@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }, index) => (

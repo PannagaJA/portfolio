@@ -1,9 +1,9 @@
+/* Modern Portfolio Design System - Enhanced with Theme Toggle & Glassmorphism */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Modern Portfolio Design System - Enhanced with Theme Toggle & Glassmorphism */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -192,4 +192,8 @@
   .container-responsive {
     @apply container mx-auto px-6 max-w-6xl;
   }
+}
+
+.glass-card {
+  will-change: transform, width, padding;
 }
