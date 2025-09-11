@@ -1,0 +1,173 @@
+import { ExternalLink, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+const Projects = () => {
+  const projects = [
+    {
+      title: "AI-Powered Analytics Dashboard",
+      description: "A comprehensive analytics platform that uses machine learning to provide predictive insights for e-commerce businesses. Built with React, Python, and TensorFlow.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      technologies: ["React", "Python", "TensorFlow", "PostgreSQL", "AWS"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: true
+    },
+    {
+      title: "Smart Contract Trading Bot",
+      description: "Automated trading bot for DeFi protocols with smart contract integration. Includes risk management algorithms and real-time market analysis.",
+      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+      technologies: ["Node.js", "Web3.js", "Solidity", "React", "MongoDB"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: true
+    },
+    {
+      title: "Team Collaboration Platform",
+      description: "Real-time collaboration tool for remote teams with video calls, document sharing, and project management features. Used by 10,000+ users.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+      technologies: ["Next.js", "Socket.io", "Redis", "PostgreSQL", "Docker"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: true
+    },
+    {
+      title: "Mobile Learning App",
+      description: "Educational mobile app with personalized learning paths and AI-driven content recommendations. Available on iOS and Android.",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
+      technologies: ["React Native", "Firebase", "Python", "ML Algorithms"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    },
+    {
+      title: "E-commerce Optimization Tool",
+      description: "SaaS platform that helps online stores optimize their conversion rates using A/B testing and user behavior analysis.",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      technologies: ["Vue.js", "Node.js", "MySQL", "AWS", "Stripe API"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    },
+    {
+      title: "IoT Environmental Monitor",
+      description: "IoT system for monitoring environmental conditions in smart buildings with real-time alerts and data visualization.",
+      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop",
+      technologies: ["Arduino", "React", "InfluxDB", "Node.js", "MQTT"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    }
+  ];
+
+  const featuredProjects = projects.filter(p => p.featured);
+  const otherProjects = projects.filter(p => !p.featured);
+
+  return (
+    <section id="projects" className="section-padding bg-card/30">
+      <div className="container-responsive">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Projects</h2>
+          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            Here are some of the projects I've worked on that showcase my skills and passion for innovation
+          </p>
+        </div>
+
+        {/* Featured Projects */}
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
+          {featuredProjects.map((project, index) => (
+            <Card 
+              key={project.title}
+              className="group hover-lift transition-spring border-border/40 bg-card/60 backdrop-blur-sm overflow-hidden animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="relative overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-smooth"></div>
+              </div>
+              <CardHeader>
+                <h3 className="text-xl font-semibold group-hover:text-primary transition-smooth">
+                  {project.title}
+                </h3>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech) => (
+                    <Badge key={tech} variant="secondary" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <Button size="sm" className="flex-1">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Live Demo
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    <Github className="h-4 w-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Other Projects */}
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-8">Other Notable Projects</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherProjects.map((project, index) => (
+              <Card 
+                key={project.title}
+                className="hover-lift transition-spring border-border/40 bg-card/40 backdrop-blur-sm animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardHeader className="pb-3">
+                  <h4 className="font-semibold text-lg">{project.title}</h4>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {project.technologies.slice(0, 3).map((tech) => (
+                      <Badge key={tech} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <Badge variant="secondary" className="text-xs">
+                        +{project.technologies.length - 3}
+                      </Badge>
+                    )}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline" className="flex-1 text-xs">
+                      <ExternalLink className="mr-1 h-3 w-3" />
+                      Demo
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Github className="h-3 w-3" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Projects;
