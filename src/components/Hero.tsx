@@ -14,28 +14,29 @@ const Hero = () => {
     }
   };
 
-  const handleDownloadResume = () => {
-    const link = document.createElement("a");
-    link.href = Resume;
-    link.download = "PannagaJA_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+const handleDownloadResume = () => {
+  const resumeUrl = "/PannagaJA_Resume.pdf"; // public path
 
-    // Trigger toast
-    toast.success(
-        "Resume downloaded successfully!",
-        {
-          style: {
-            fontSize: "1.2rem", // larger text
-            padding: "1rem 1.5rem",
-            minWidth: "250px",
-            textAlign: "center",
-          },
-          duration: 4000, // 4 seconds
-        }
-      );
-  };
+  // Trigger download with exact filename
+  const link = document.createElement("a");
+  link.href = resumeUrl;
+  link.download = "PannagaJA_Resume.pdf"; // exact filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // Toast
+  toast.success("Resume downloaded successfully!", {
+    style: {
+      fontSize: "1.2rem",
+      padding: "1rem 1.5rem",
+      minWidth: "250px",
+      textAlign: "center",
+    },
+    duration: 4000,
+  });
+};
+
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center section-padding">
