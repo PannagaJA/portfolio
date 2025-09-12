@@ -2,7 +2,7 @@ import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile-image.jpg";
 import { motion } from "framer-motion";
-import Resume from "@/assets/resume.pdf";
+import Resume from "@/assets/PannagaJA_Resume.pdf";
 import { toast } from "@/components/ui/sonner";
 
 
