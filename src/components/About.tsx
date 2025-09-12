@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react"; // Icons for cards
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
+  const [activeTab, setActiveTab] = useState("experience");
   const ref = useRef<HTMLDivElement | null>(null);
   const [lineHeight, setLineHeight] = useState(0);
 
@@ -132,11 +132,11 @@ const About = () => {
         <div>
           {/* Tabs */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <div className="flex justify-center mb-10 space-x-4 ">
+            <div className="flex justify-center mb-10 space-x-4">
               {["experience", "education"].map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setActiveTab(tab as any)}
+                  onClick={() => setActiveTab(tab)}
                   className={`
                     px-4 py-2 rounded-full text-sm font-medium transition
                     ${

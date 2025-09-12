@@ -19,9 +19,10 @@ const Navigation = () => {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Blog", href: "#blog" },
+    { name: "Certifications", href: "#certifications" },
     { name: "Contact", href: "#contact" },
-  ];
+];
+
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);

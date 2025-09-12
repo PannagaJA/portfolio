@@ -1,71 +1,77 @@
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle  } from "lucide-react";
+import { Mail, Phone, MapPin, Send, } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"; // Material icons
+import { FaGithub, FaLinkedin } from "react-icons/fa"; // Brand icons
+import { SiGmail, SiWhatsapp, SiLinkedin, SiGithub } from "react-icons/si";
+
+
 
 const Contact = () => {
   const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "pannaga.baradwaj@gmail.com",
-      href: "mailto:pannaga.baradwaj@gmail.com"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 9741405534",
-      href: "tel:+919741405534"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Bengaluru, India",
-      href: "#"
-    }
-  ];
+  {
+    icon: MdEmail,
+    label: "Email",
+    value: "pannaga.baradwaj@gmail.com",
+    href: "mailto:pannaga.baradwaj@gmail.com",
+  },
+  {
+    icon: MdPhone,
+    label: "Phone",
+    value: "+91 9741405534",
+    href: "tel:+919741405534",
+  },
+  {
+    icon: MdLocationOn,
+    label: "Location",
+    value: "Bengaluru, India",
+    href: "#",
+  },
+];
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/PannagaJA", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/pannaga-ja", label: "LinkedIn" },
-  ];
+const socialLinks = [
+  { icon: SiLinkedin, href: "https://github.com/PannagaJA", label: "GitHub" },
+  { icon: SiLinkedin, href: "https://linkedin.com/in/pannaga-ja", label: "LinkedIn" },
+];
 
   const connectOptions = [
-    {
-      label: "Email",
-      desc: "Perfect for detailed discussions",
-      href: "mailto:pannaga.baradwaj@gmail.com",
-      icon: Mail,
-      btnText: "send an email",
-      btnClass: "bg-blue-600 hover:bg-blue-700 text-white",
-    },
-    {
-      label: "WhatsApp",
-      desc: "Quick messages",
-      href: "https://wa.me/9741405534?text=Hello%20Pannaga,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect!",
-      icon: MessageCircle,
-      btnText: "Chat with me",
-      btnClass: "bg-green-500 hover:bg-green-600 text-white",
-    },
-    {
-      label: "LinkedIn",
-      desc: "Professional network",
-      href: "https://linkedin.com/in/pannaga-ja",
-      icon: Linkedin,
-      btnText: "Connect",
-      btnClass: "bg-blue-600 hover:bg-blue-700 text-white",
-    },
-    {
-      label: "GitHub",
-      desc: "Explore my projects",
-      href: "https://github.com/PannagaJA",
-      icon: Github,
-      btnText: "Explore",
-      btnClass: "bg-gray-900 hover:bg-gray-800 text-white",
-    },
-  ];
+  {
+    label: "Email",
+    desc: "Perfect for detailed discussions",
+    href: "mailto:pannaga.baradwaj@gmail.com",
+    icon: SiGmail,
+    color: "text-red-600", // Gmail red
+    btnText: "Send an Email",
+    btnClass: "bg-red-600 hover:bg-red-700 text-white",
+  },
+  {
+    label: "WhatsApp",
+    desc: "Quick messages",
+    href: "https://wa.me/9741405534?text=Hello%20Pannaga",
+    icon: SiWhatsapp,
+    color: "text-green-500", // WhatsApp green
+    btnText: "Chat on WhatsApp",
+    btnClass: "bg-green-500 hover:bg-green-600 text-white",
+  },
+  {
+    label: "LinkedIn",
+    desc: "Professional network",
+    href: "https://linkedin.com/in/pannaga-ja",
+    icon: SiLinkedin,
+    color: "text-blue-600", // LinkedIn blue
+    btnText: "Connect",
+    btnClass: "bg-blue-600 hover:bg-blue-700 text-white",
+  },
+  {
+    label: "GitHub",
+    desc: "Explore my projects",
+    href: "https://github.com/PannagaJA",
+    icon: SiGithub,
+    color: "text-gray-200 dark:text-gray-100", // GitHub black / white in dark mode
+    btnText: "Explore",
+    btnClass: "bg-gray-900 hover:bg-gray-800 text-white",
+  },
+];
 
   return (
    <section id="contact" className="section-padding bg-card/30">
@@ -98,12 +104,14 @@ const Contact = () => {
             <motion.a
               key={i}
               href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass-card glass-hover rounded-2xl p-6 flex flex-col justify-between transition-all duration-300"
               whileHover={{ scale: 1.03, y: -4 }}
               whileTap={{ scale: 0.98 }}
             >
               <div>
-                <item.icon className="w-8 h-8 mb-4 text-primary" />
+                <item.icon className={`w-8 h-8 mb-4 ${item.color}`} />
                 <h3 className="font-bold text-lg">{item.label}</h3>
                 <p className="text-muted-foreground text-sm">{item.desc}</p>
               </div>
@@ -116,7 +124,6 @@ const Contact = () => {
             </motion.a>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

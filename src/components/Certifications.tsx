@@ -14,6 +14,9 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { Worker, Viewer } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 const Certifications = () => {
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
@@ -337,18 +340,48 @@ const Certifications = () => {
               Preview and download your certificate.
             </DialogDescription>
           </DialogHeader>
+
           {selectedCertificate && (
-            <div className="w-full h-[70vh] sm:h-[65vh] xs:h-[55vh] rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-              <object
-                data={selectedCertificate}
-                type="application/pdf"
-                width="100%"
-                height="100%"
-                className="w-full h-full"
-              >
-                <p>Your browser does not support PDFs. <a href={selectedCertificate} target="_blank" rel="noopener noreferrer">Download the PDF</a> instead.</p>
-              </object>
-            </div>
+            <motion.div
+              className="mt-6 w-full max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-background shadow-lg">
+                <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+                  <div style={{ height: '60vh' }}>
+                    <Viewer fileUrl={selectedCertificate} />
+                  </div>
+                </Worker>
+              </div>
+
+              <div className="flex justify-between items-center mt-3 px-2">
+                <Button
+                  variant="ghost"
+                  onClick={() => setSelectedCertificate(null)}
+                  className="glass-card glass-hover hover:bg-primary hover:text-primary-foreground border-primary/20"
+                >
+                  Close Preview
+                </Button>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="glass-card glass-hover hover:bg-primary hover:text-primary-foreground border-primary/20"
+                      onClick={() => {
+                        const link = document.createElement('a');
+                        link.href = selectedCertificate!;
+                        link.download = selectedCertificate!.split('/').pop() || 'certificate.pdf';
+                        link.click();
+                      }}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Certificate
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
           )}
         </DialogContent>
       </Dialog>
