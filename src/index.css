@@ -197,3 +197,48 @@
 .glass-card {
   will-change: transform, width, padding;
 }
+@keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  --scroll-speed: 60s;
+  animation: scroll var(--scroll-speed) linear infinite;
+  will-change: transform;
+  transition: --scroll-speed 0.8s ease-in-out; /* Smooth transition */
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+/* Tablet only (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cert-card {
+    height: 20rem; /* taller so both sections fit */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Push header content to the top */
+  .cert-card-header {
+    justify-content: flex-start !important;
+    height: auto !important;
+  }
+
+  /* Always show content at bottom */
+  .cert-card-content {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin-top: auto;
+    background-color: transparent;
+    border-radius: 0.75rem;
+  }
+}
+
