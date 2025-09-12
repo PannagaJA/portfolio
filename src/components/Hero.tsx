@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile-image.jpg";
 import { motion } from "framer-motion";
 import Resume from "@/assets/resume.pdf";
+import { toast } from "@/components/ui/sonner";
+
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -10,6 +12,18 @@ const Hero = () => {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = Resume;
+    link.download = "PannagaJA_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Trigger toast
+    toast.success("Resume downloaded successfully!");
   };
 
   return (
@@ -90,6 +104,7 @@ const Hero = () => {
                   variant="outline" 
                   size="lg"
                   className="glass-card glass-hover hover:bg-primary hover:text-primary-foreground border-primary/20"
+                  onClick={handleDownloadResume}
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
