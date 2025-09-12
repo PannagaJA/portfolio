@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Send, } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"; // Material icons
@@ -30,7 +30,7 @@ const Contact = () => {
 ];
 
 const socialLinks = [
-  { icon: SiLinkedin, href: "https://github.com/PannagaJA", label: "GitHub" },
+  { icon: SiGithub, href: "https://github.com/PannagaJA", label: "GitHub" },
   { icon: SiLinkedin, href: "https://linkedin.com/in/pannaga-ja", label: "LinkedIn" },
 ];
 
@@ -47,7 +47,7 @@ const socialLinks = [
   {
     label: "WhatsApp",
     desc: "Quick messages",
-    href: "https://wa.me/9741405534?text=Hello%20Pannaga",
+    href: "https://wa.me/9741405534?text=Hi%20Pannaga,%20I'd%20like%20to%20connect%20regarding%20a%20project",
     icon: SiWhatsapp,
     color: "text-green-500", // WhatsApp green
     btnText: "Chat on WhatsApp",
@@ -62,15 +62,18 @@ const socialLinks = [
     btnText: "Connect",
     btnClass: "bg-blue-600 hover:bg-blue-700 text-white",
   },
-  {
-    label: "GitHub",
-    desc: "Explore my projects",
-    href: "https://github.com/PannagaJA",
-    icon: SiGithub,
-    color: "text-gray-200 dark:text-gray-100", // GitHub black / white in dark mode
-    btnText: "Explore",
-    btnClass: "bg-gray-900 hover:bg-gray-800 text-white",
-  },
+{
+  label: "GitHub",
+  desc: "Explore my projects",
+  href: "https://github.com/PannagaJA",
+  icon: SiGithub,
+  color: "",
+  btnText: "Explore",
+  btnClass: "bg-gray-900 hover:bg-gray-800 text-white",
+},
+
+
+
 ];
 
   return (
@@ -111,7 +114,14 @@ const socialLinks = [
               whileTap={{ scale: 0.98 }}
             >
               <div>
-                <item.icon className={`w-8 h-8 mb-4 ${item.color}`} />
+                {item.label === "GitHub" ? (
+                  <SiGithub 
+                    className="w-8 h-8 mb-4 text-gray-900 dark:text-white" 
+                    style={{ color: "currentColor" }} 
+                  />
+                ) : (
+                  <item.icon className={`w-8 h-8 mb-4 ${item.color}`} />
+                )}
                 <h3 className="font-bold text-lg">{item.label}</h3>
                 <p className="text-muted-foreground text-sm">{item.desc}</p>
               </div>

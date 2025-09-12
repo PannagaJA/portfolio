@@ -241,3 +241,12 @@
     border-radius: 0.75rem;
   }
 }
+/* Base GitHub icon style */
+.github-icon {
+  @apply text-gray-900; /* Light theme */
+}
+
+/* Dark mode override */
+.dark .github-icon {
+  @apply text-gray-200; /* Dark theme */
+}
