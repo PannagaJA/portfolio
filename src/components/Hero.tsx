@@ -23,7 +23,18 @@ const Hero = () => {
     document.body.removeChild(link);
 
     // Trigger toast
-    toast.success("Resume downloaded successfully!");
+    toast.success(
+        "Resume downloaded successfully!",
+        {
+          style: {
+            fontSize: "1.2rem", // larger text
+            padding: "1rem 1.5rem",
+            minWidth: "250px",
+            textAlign: "center",
+          },
+          duration: 4000, // 4 seconds
+        }
+      );
   };
 
   return (
@@ -99,7 +110,6 @@ const Hero = () => {
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a href={Resume} download>
                 <Button 
                   variant="outline" 
                   size="lg"
@@ -109,7 +119,6 @@ const Hero = () => {
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </Button>
-              </a>
             </motion.div>
           </motion.div>
 
