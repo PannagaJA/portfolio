@@ -60,6 +60,7 @@ const Navigation = () => {
         >
           {/* Logo */}
           <motion.div
+            layoutId="brand-logo"
             className="text-xl font-bold mr-6 whitespace-nowrap min-w-[130px]"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 250, damping: 18 }}
