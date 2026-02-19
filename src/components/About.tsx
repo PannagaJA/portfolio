@@ -51,7 +51,7 @@ const About = () => {
       points: [
         "Specialized in Artificial Intelligence & Machine Learning",
         "Consistently strong academic performance",
-        "SGPA: SEM1 – 8.85 | SEM2 – 8.30 | SEM3 – 9.10 | SEM4 – 8.42 | SEM5 – 8.77 | SEM6 – 8.94",
+        "SGPA: SEM1 – 8.85 | SEM2 – 8.30 | SEM3 – 9.10 | SEM4 – 8.42 | SEM5 – 8.77 | SEM6 – 8.94 | SEM7 – 9.25",
       ],
       tags: ["AI", "ML", "Cloud Computing"],
     },
