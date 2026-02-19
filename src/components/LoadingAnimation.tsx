@@ -9,10 +9,10 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Total loading duration (adjust as needed)
+    // Reduced loading duration for better performance
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2800);
+    }, 1500); // Reduced from 2800ms to 1500ms
 
     return () => clearTimeout(timer);
   }, []);
@@ -25,32 +25,30 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ children }) => {
           className="fixed inset-0 flex flex-col items-center justify-center bg-background z-50 overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           {/* Animated Background Blobs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
-              className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+              className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/15 rounded-full blur-3xl"
               animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 90, 0],
-                x: [0, 50, 0],
+                scale: [1, 1.1, 1],
+                x: [0, 30, 0],
               }}
               transition={{
-                duration: 8,
+                duration: 6,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             />
             <motion.div
-              className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
+              className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-secondary/15 rounded-full blur-3xl"
               animate={{
-                scale: [1, 1.5, 1],
-                rotate: [0, -60, 0],
-                x: [0, -30, 0],
+                scale: [1, 1.2, 1],
+                x: [0, -20, 0],
               }}
               transition={{
-                duration: 10,
+                duration: 7,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
@@ -65,8 +63,8 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ children }) => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
-                duration: 0.8,
-                ease: "anticipate",
+                duration: 0.5,
+                ease: "easeOut",
               }}
             >
               <span className="text-foreground">Pannaga </span>
@@ -90,7 +88,7 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ children }) => {
                 className="text-2xl md:text-3xl text-muted-foreground font-light tracking-[0.5em]"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
               >
                 PORTFOLIO
               </motion.span>

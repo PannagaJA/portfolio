@@ -21,23 +21,31 @@ const ScrollProgress = () => {
   ];
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const sectionElements = sections.map(section => 
-        document.getElementById(section.id)
-      );
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sectionElements = sections.map(section => 
+            document.getElementById(section.id)
+          );
 
-      const currentSection = sectionElements.findIndex(element => {
-        if (!element) return false;
-        const rect = element.getBoundingClientRect();
-        return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-      });
+          const currentSection = sectionElements.findIndex(element => {
+            if (!element) return false;
+            const rect = element.getBoundingClientRect();
+            return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+          });
 
-      if (currentSection !== -1) {
-        setActiveSection(currentSection);
+          if (currentSection !== -1) {
+            setActiveSection(currentSection);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -90,11 +98,11 @@ const ScrollProgress = () => {
             {/* Active section glow */}
             {activeSection === index && (
               <motion.div
-                className="absolute inset-0 rounded-full bg-primary/20"
-                initial={{ scale: 0 }}
-                animate={{ scale: 2, opacity: 0 }}
+                className="absolute inset-0 rounded-full bg-primary/10"
+                initial={{ scale: 0.8, opacity: 0.7 }}
+                animate={{ scale: 1.5, opacity: 0 }}
                 transition={{
-                  duration: 1.5,
+                  duration: 2,
                   repeat: Infinity,
                   ease: "easeOut"
                 }}

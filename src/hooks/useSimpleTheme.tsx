@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 
 export function useSimpleTheme() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Check localStorage after component mounts to avoid SSR issues
-    const savedTheme = localStorage.getItem("portfolio-theme") as "dark" | "light";
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-  }, []);
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    // Initialize from localStorage or default to dark
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    return (savedTheme === "light" || savedTheme === "dark") ? savedTheme : "dark";
+  });
 
   useEffect(() => {
     // Apply theme to document

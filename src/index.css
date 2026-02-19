@@ -109,8 +109,14 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased transition-colors duration-500;
+    @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Smooth transitions only after initial load */
+  .theme-transition-ready * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease;
   }
 
   /* Light theme gradient background */
@@ -196,6 +202,33 @@
 
 .glass-card {
   will-change: transform, width, padding;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Optimize all animated elements */
+[motion] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Navigation animations */
+nav {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  will-change: width;
+  transform: translateZ(0);
+}
+
+/* Optimize framer-motion elements */
+[data-framer-component] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 @keyframes scroll {
   from {
